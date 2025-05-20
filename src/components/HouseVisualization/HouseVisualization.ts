@@ -14,6 +14,10 @@ export class HouseVisualization {
         this.threeScene = new ThreeScene(this.container, devicesConfig);
     }
 
+    public render(): HTMLElement {
+        return this.container;
+    }
+
     public destroy(): void {
         if (this.threeScene) {
             this.threeScene.dispose();
