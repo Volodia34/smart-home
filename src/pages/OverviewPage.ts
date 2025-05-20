@@ -3,11 +3,12 @@ import {SmartDevice} from "../components/DeviceControls/DeviceControls.ts";
 
 export class OverviewPage {
     private devices: SmartDevice[];
+    private appRoot!: HTMLElement;
 
-    constructor(devicesConfig: SmartDevice[]) {
+    constructor(appRoot: HTMLElement, devicesConfig: SmartDevice[]) {
+        this.appRoot = appRoot;
         this.devices = devicesConfig || [];
     }
-
 
     private getActiveDevicesCount(): number {
         return this.devices.filter(device => {
