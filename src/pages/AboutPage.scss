@@ -1,0 +1,62 @@
+.about-page {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  line-height: 1.7;
+
+  section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        font-size: 1.5rem;
+        margin-right: 0.75rem;
+        line-height: 1;
+      }
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: var(--text);
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .tech-list {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+      strong {
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
