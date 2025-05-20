@@ -1,0 +1,79 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    position: relative;
+  }
+
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.25s ease;
+    position: relative;
+    padding: 0.25rem 0;
+    display: inline-block;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  .theme-toggle {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 2rem;
+
+    &:hover {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+  }
+}
