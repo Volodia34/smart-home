@@ -31,10 +31,10 @@
 
   &.active {
     background-color: var(--accent);
-    color: var(--bg); // Or a specific color for active text like #fff
+    color: var(--bg);
 
     .device-icon, .device-name {
-      color: var(--bg); // Or #fff
+      color: var(--bg);
     }
 
     .status-toggle {
@@ -86,16 +86,16 @@
 .device-name {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem; // Зменшено відступ для деталей
+  margin-bottom: 0.5rem;
   color: var(--text);
 }
 
-.device-details { // Новий стиль
+.device-details {
   font-size: 0.75rem;
   color: var(--text);
   opacity: 0.7;
   margin-bottom: 0.8rem;
-  min-height: 1.2em; // Щоб уникнути стрибків висоти, якщо деталі відсутні
+  min-height: 1.2em;
 }
 
 .status-toggle {
@@ -107,7 +107,7 @@
   color: var(--text);
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 70px; // Трохи збільшено для довших статусів
+  min-width: 70px;
 
   &:hover {
     background-color: var(--accent);
@@ -115,4 +115,5 @@
     border-color: var(--accent);
   }
 }
+
 
