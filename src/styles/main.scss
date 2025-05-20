@@ -1,7 +1,5 @@
-@import '../components/Header/Header.scss';
-@import '../components/DeviceControls/DeviceControls.scss';
-@import '../pages/OverviewPage.scss';
-
+@use '../components/Header/Header' as header;
+@use '../components/DeviceControls/DeviceControls' as deviceControls;
 
 :root {
   --bg: #0e0e0e;

@@ -22,8 +22,6 @@ export class ThreeScene {
         this.scene = new _THREE.Scene();
         this.scene.background = null;
 
-        const axesHelper = new _THREE.AxesHelper(5);
-        this.scene.add(axesHelper);
 
         this.camera = new _THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
         this.camera.position.set(2.5, 6, 3.5);
