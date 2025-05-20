@@ -8,6 +8,7 @@ export class OverviewPage {
     constructor(appRoot: HTMLElement, devicesConfig: SmartDevice[]) {
         this.appRoot = appRoot;
         this.devices = devicesConfig || [];
+
     }
 
     private getActiveDevicesCount(): number {
@@ -19,7 +20,6 @@ export class OverviewPage {
 
     private getSecurityStatus(): { message: string, details: string, isSecure: boolean } {
         const doorLock = this.devices.find(d => d.type === 'door_lock');
-        // Можна додати перевірку камер, якщо вони є в конфігурації
         const securityCameras = this.devices.filter(d => d.type === 'security_camera');
         const activeCameras = securityCameras.filter(c => c.status === 'on').length;
 
@@ -47,7 +47,6 @@ export class OverviewPage {
     private getThermostatInfo(): { temperature: string, humidity?: string } {
         const thermostat = this.devices.find(d => d.type === 'thermostat');
         if (thermostat && typeof thermostat.status === 'number') {
-            // Можна додати вологість, якщо така інформація є
             return { temperature: `${thermostat.status}°C` };
         }
         return { temperature: 'N/A' };
@@ -68,7 +67,7 @@ export class OverviewPage {
         const security = this.getSecurityStatus();
         const thermostat = this.getThermostatInfo();
         const lightingSummary = this.getLightingSummary();
-        const userName = "Homeowner"; // Можна отримувати з налаштувань або автентифікації
+        const userName = "Homeowner";
 
         pageElement.innerHTML = `
             <header class="overview-header">
@@ -151,6 +150,8 @@ export class OverviewPage {
                 alert(`Action: ${action} (Implementation pending)`);
             });
         });
+
+        this.appRoot.appendChild(pageElement);
 
         return pageElement;
     }

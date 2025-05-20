@@ -1,5 +1,6 @@
 export class AboutPage {
-    constructor(appRoot: HTMLElement) {}
+    constructor(appRoot: HTMLElement) {
+    }
 
     public render(): HTMLElement {
         const pageElement = document.createElement('div');
