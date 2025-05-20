@@ -1,7 +1,7 @@
 import { Header } from './components/Header/Header';
 import { HouseVisualization } from './components/HouseVisualization/HouseVisualization';
-import { DeviceControls } from './components/DeviceControls/DeviceControls';
-import { Router } from './Router'; // Імпорт роутера
+import { DeviceControls, SmartDevice } from './components/DeviceControls/DeviceControls';
+import { Router } from './Router';
 import { OverviewPage } from './pages/OverviewPage';
 import { DevicesPage } from './pages/DevicesPage';
 import { AboutPage } from './pages/AboutPage';
@@ -10,10 +10,8 @@ export class App {
     private root: HTMLElement;
     private router!: Router;
     private headerInstance!: Header;
-
     private houseVisualizationComponent = HouseVisualization;
     private deviceControlsComponent = DeviceControls;
-
 
     constructor() {
         this.root = document.getElementById('root')!;
@@ -35,7 +33,7 @@ export class App {
 
     private initRoutes() {
         const tempDeviceControls = new DeviceControls();
-        const devicesConfig = tempDeviceControls.getDeviceDefinitions();
+        const devicesConfig: SmartDevice[] = tempDeviceControls.getDeviceDefinitions();
 
         this.router.registerHomePageComponents(
             this.houseVisualizationComponent,
@@ -43,13 +41,20 @@ export class App {
             devicesConfig
         );
 
+        this.router.registerDevicesConfig(devicesConfig);
+
         this.router
             .addRoute('/home', this.houseVisualizationComponent, true)
             .addRoute('/overview', OverviewPage)
             .addRoute('/devices', DevicesPage)
             .addRoute('/about', AboutPage);
 
-        this.router.navigate(window.location.hash.substring(1) || '/home');
+        const currentPath = window.location.hash.substring(1) || '/home';
+        if (window.location.hash) {
+            this.router.navigate(currentPath);
+        } else {
+            this.router.navigate('/home');
+        }
     }
 
     public destroy() {
