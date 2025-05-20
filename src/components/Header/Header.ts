@@ -1,5 +1,7 @@
 export class Header {
     private navLinks: NodeListOf<HTMLAnchorElement> | null = null;
+    private navMenu: HTMLElement | null = null;
+    private hamburgerIcon: HTMLElement | null = null;
 
     public render(): HTMLElement {
         const el = document.createElement('header');
@@ -8,7 +10,12 @@ export class Header {
         el.innerHTML = `
           <div class="logo">🏠 Smart Home</div>
           <nav>
-            <ul>
+            <button class="hamburger-icon" aria-label="Toggle menu" aria-expanded="false">
+              <span class="hamburger-icon-bar"></span>
+              <span class="hamburger-icon-bar"></span>
+              <span class="hamburger-icon-bar"></span>
+            </button>
+            <ul class="nav-menu">
               <li><a href="#/home" class="nav-link">Home</a></li>
               <li><a href="#/overview" class="nav-link">Overview</a></li>
               <li><a href="#/devices" class="nav-link">Devices</a></li>
@@ -33,13 +40,34 @@ export class Header {
             localStorage.setItem('theme', next);
         });
 
-
-        el.appendChild(toggleButton);
+        const navElement = el.querySelector('nav');
+        if (navElement) {
+            navElement.appendChild(toggleButton);
+        }
 
         this.navLinks = el.querySelectorAll('nav .nav-link');
+        this.navMenu = el.querySelector<HTMLElement>('nav .nav-menu');
+        this.hamburgerIcon = el.querySelector<HTMLElement>('.hamburger-icon');
+
+        if (this.hamburgerIcon && this.navMenu) {
+            this.hamburgerIcon.addEventListener('click', () => {
+                const isExpanded = this.hamburgerIcon?.getAttribute('aria-expanded') === 'true' || false;
+                this.hamburgerIcon?.setAttribute('aria-expanded', (!isExpanded).toString());
+                this.navMenu?.classList.toggle('is-active');
+            });
+        }
+
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (this.navMenu?.classList.contains('is-active')) {
+                    this.hamburgerIcon?.setAttribute('aria-expanded', 'false');
+                    this.navMenu.classList.remove('is-active');
+                }
+            });
+        });
+
         window.addEventListener('hashchange', this.updateActiveLink.bind(this));
         this.updateActiveLink();
-
 
         return el;
     }

@@ -1,3 +1,5 @@
+@use '../styles/mixins' as *;
+
 .overview-page {
   max-width: 1000px;
   margin-left: auto;
@@ -159,12 +161,98 @@
 
       &:hover {
         background-color: var(--accent, #00eaff);
+        filter: brightness(110%);
         transform: translateY(-3px);
         box-shadow: 0 4px 10px rgba(var(--accent_rgb, 0, 234, 255), 0.3);
       }
       &:active {
         transform: translateY(-1px);
         box-shadow: 0 2px 5px rgba(var(--accent_rgb, 0, 234, 255), 0.2);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 1rem;
+
+    .overview-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      h1 { font-size: 2rem; }
+      .welcome-message { font-size: 1rem; line-height: 1.5; }
+    }
+
+    .key-metrics {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      padding: 1rem;
+      border-radius: 10px;
+      .metric-icon { font-size: 2rem; }
+      .metric-value { font-size: 1.3rem; }
+      .metric-label { font-size: 0.8rem; }
+      .metric-details { font-size: 0.75rem; }
+      &.secure, &.insecure { border-left-width: 3px; }
+    }
+
+    .info-panel {
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      h2 { font-size: 1.4rem; }
+      p { font-size: 0.95rem; }
+    }
+
+    .quick-actions {
+      h2 { font-size: 1.5rem; }
+      p { font-size: 0.95rem; }
+      .actions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.75rem;
+      }
+      .action-button {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        .action-icon { font-size: 1rem; }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 0.5rem;
+
+    .overview-header {
+      h1 { font-size: 1.6rem; }
+      .welcome-message { font-size: 0.9rem; }
+    }
+
+    .key-metrics {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+    .metric-card {
+      padding: 0.8rem;
+      .metric-icon { font-size: 1.8rem; }
+      .metric-value { font-size: 1.2rem; }
+    }
+
+    .info-panel {
+      padding: 1rem;
+      h2 { font-size: 1.3rem; }
+      p { font-size: 0.9rem; }
+    }
+
+    .quick-actions {
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+      .action-button {
+        font-size: 0.85rem;
+        padding: 0.7rem 0.9rem;
       }
     }
   }
