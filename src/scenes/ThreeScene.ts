@@ -81,7 +81,7 @@ export class ThreeScene {
 
     private loadHouseModel(): void {
         const loader = new GLTFLoader();
-        loader.load('/src/assets/house.glb', (gltf) => { //
+        loader.load('/assets/house.glb', (gltf) => { //
             const model = gltf.scene;
             model.position.set(0, -1.5, 0);
             model.scale.set(0.8, 0.8, 0.8);
