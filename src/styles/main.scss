@@ -1,6 +1,24 @@
+@import '../components/Header/Header.scss';
+:root {
+  --bg: #0e0e0e;
+  --text: #ffffff;
+  --accent: #00eaff;
+  --card-bg: #1f1f1f;
+  --border: #333;
+}
+
+[data-theme='light'] {
+  --bg: #f5f7fa;
+  --text: #1a1a1a;
+  --accent: #007acc;
+  --card-bg: #ffffff;
+  --border: #e0e0e0;
+}
+
 body {
   margin: 0;
-  background: #0e0e0e;
-  color: white;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
 }
