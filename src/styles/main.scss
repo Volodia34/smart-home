@@ -1,3 +1,4 @@
+@use 'mixins' as *;
 @use '../components/Header/Header' as header;
 @use '../components/DeviceControls/DeviceControls' as deviceControls;
 
@@ -23,4 +24,15 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background 0.3s ease, color 0.3s ease;
+  @include media-breakpoint-down(sm) {
+    font-size: 14px; // Як приклад, можна підібрати інше значення
+  }
+}
+
+#page-content {
+  padding: 1rem;
+
+  @include media-breakpoint-up(md) {
+    padding: 2rem;
+  }
 }
